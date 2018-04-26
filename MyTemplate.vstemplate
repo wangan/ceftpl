@@ -1,0 +1,38 @@
+﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>ceftpl</Name>
+    <Description>CEF 模板</Description>
+    <ProjectType>VC</ProjectType>
+    <Icon>__TemplateIcon.ico</Icon>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ceftpl</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <CreateInPlace>true</CreateInPlace>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$projectname$.vcxproj" File="ceftpl.vcxproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="$projectname$.exe.manifest">ceftpl.exe.manifest</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="compatibility.manifest">compatibility.manifest</ProjectItem>
+     
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$.vcxproj.filters">ceftpl.vcxproj.filters</ProjectItem>
+      
+      <ProjectItem ReplaceParameters="true" TargetFileName="resource.h">resource.h</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_app.h">ceftpl_app.h</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_handler.h">ceftpl_handler.h</ProjectItem>
+      
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_win.cc">ceftpl_win.cc</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_app.cc">ceftpl_app.cc</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_handler.cc">ceftpl_handler.cc</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$_handler_win.cc">ceftpl_handler_win.cc</ProjectItem>
+
+      <ProjectItem ReplaceParameters="true" TargetFileName="$safeprojectname$.rc">ceftpl.rc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="res\app.ico">app.ico</ProjectItem>
+
+    </Project>
+  </TemplateContent>
+</VSTemplate>

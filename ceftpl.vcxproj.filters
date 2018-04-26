@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_app.cc">
+      <Filter>$projectname$</Filter>
+    </ClCompile>
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_handler.cc">
+      <Filter>$projectname$</Filter>
+    </ClCompile>
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_handler_win.cc">
+      <Filter>$projectname$</Filter>
+    </ClCompile>
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_win.cc">
+      <Filter>$projectname$</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(ProjectDir)$safeprojectname$_app.h">
+      <Filter>$safeprojectname$</Filter>
+    </ClInclude>
+    <ClInclude Include="$(ProjectDir)$safeprojectname$_handler.h">
+      <Filter>$safeprojectname$</Filter>
+    </ClInclude>
+    <ClInclude Include="$(ProjectDir)\resource.h">
+      <Filter>$safeprojectname$</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(ProjectDir)res\app.ico">
+      <Filter>$safeprojectname$\res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="$(ProjectDir)$safeprojectname$.rc">
+      <Filter>$safeprojectname$</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="$safeprojectname$\res">
+      <UniqueIdentifier>{0DF46D16-6B03-3B92-A548-A361AD9B3B87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="$safeprojectname$">
+      <UniqueIdentifier>{9DB3A77A-E819-3774-94BF-B7D8F8B852B5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="$(ProjectDir)\$safeprojectname$.rc">
+      <Filter>$safeprojectname$</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

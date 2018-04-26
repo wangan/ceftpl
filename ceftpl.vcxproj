@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{$guid1$}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>$safeprojectname$</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName).dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName).dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4100;4127;4244;4481;4512;4701;4702;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;_WIN32;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x601;NOMINMAX;WIN32_LEAN_AND_MEAN;_HAS_EXCEPTIONS=0;CEF_USE_ATL;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;_WIN32;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x601;NOMINMAX;WIN32_LEAN_AND_MEAN;_HAS_EXCEPTIONS=0;CEF_USE_ATL;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Adding manifest...																	</Message>
+      <Command>
+        setlocal
+        mt.exe -nologo -manifest "$(ProjectDir)$(TargetFileName).manifest" "$(ProjectDir)compatibility.manifest" -outputresource:"$(TargetPath)";#1
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/chrome_elf.dll $(TargetDir)/chrome_elf.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/d3dcompiler_43.dll $(TargetDir)d3dcompiler_43.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/d3dcompiler_47.dll $(TargetDir)d3dcompiler_47.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/libcef.dll $(TargetDir)libcef.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/libEGL.dll $(TargetDir)libEGL.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/libGLESv2.dll $(TargetDir)libGLESv2.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/natives_blob.bin $(TargetDir)natives_blob.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/snapshot_blob.bin $(TargetDir)snapshot_blob.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Debug/v8_context_snapshot.bin $(TargetDir)v8_context_snapshot.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory $(SolutionDir)Debug/swiftshader $(TargetDir)swiftshader
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef.pak $(TargetDir)cef.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_100_percent.pak $(TargetDir)cef_100_percent.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_200_percent.pak $(TargetDir)cef_200_percent.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_extensions.pak $(TargetDir)cef_extensions.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/devtools_resources.pak $(TargetDir)devtools_resources.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/icudtl.dat $(TargetDir)icudtl.dat
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory $(SolutionDir)Resources/locales $(TargetDir)locales
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+      </Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\Debug\libcef.lib;..\libcef_dll_wrapper\Debug\libcef_dll_wrapper.lib;comctl32.lib;rpcrt4.lib;shlwapi.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(TargetDir)$safeprojectname$.lib</ImportLibrary>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ProgramDataBaseFile>$(TargetDir)$safeprojectname$.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>$(TargetFileName).manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4100;4127;4244;4481;4512;4701;4702;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;_WIN32;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x601;NOMINMAX;WIN32_LEAN_AND_MEAN;_HAS_EXCEPTIONS=0;CEF_USE_ATL;_NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;_WIN32;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x601;NOMINMAX;WIN32_LEAN_AND_MEAN;_HAS_EXCEPTIONS=0;CEF_USE_ATL;_NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Adding manifest...																	</Message>
+      <Command>
+        setlocal
+        mt.exe -nologo -manifest "$(ProjectDir)$(TargetFileName).manifest" "$(ProjectDir)compatibility.manifest" -outputresource:"$(TargetPath)";#1
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/chrome_elf.dll $(TargetDir)/chrome_elf.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/d3dcompiler_43.dll $(TargetDir)/d3dcompiler_43.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/d3dcompiler_47.dll $(TargetDir)/d3dcompiler_47.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/libcef.dll $(TargetDir)/libcef.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/libEGL.dll $(TargetDir)/libEGL.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/libGLESv2.dll $(TargetDir)/libGLESv2.dll
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/natives_blob.bin $(TargetDir)/natives_blob.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/snapshot_blob.bin $(TargetDir)/snapshot_blob.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Release/v8_context_snapshot.bin $(TargetDir)/v8_context_snapshot.bin
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory D$(SolutionDir)Release/swiftshader $(TargetDir)/swiftshader
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef.pak $(TargetDir)/cef.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_100_percent.pak $(TargetDir)/cef_100_percent.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_200_percent.pak $(TargetDir)/cef_200_percent.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/cef_extensions.pak $(TargetDir)/cef_extensions.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/devtools_resources.pak $(TargetDir)/devtools_resources.pak
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different $(SolutionDir)Resources/icudtl.dat $(TargetDir)/icudtl.dat
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+        setlocal
+        "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory $(SolutionDir)Resources/locales $(TargetDir)/locales
+        if %errorlevel% neq 0 goto :cmEnd
+        :cmEnd
+        endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+        :cmErrorLevel
+        exit /b %1
+        :cmDone
+        if %errorlevel% neq 0 goto :VCEnd
+      </Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\Release\libcef.lib;..\libcef_dll_wrapper\Release\libcef_dll_wrapper.lib;comctl32.lib;rpcrt4.lib;shlwapi.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(TargetDir)/$safeprojectname$.lib</ImportLibrary>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ProgramDataBaseFile>$(TargetDir)/$safeprojectname$.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>$(ProjectDir)$(TargetFileName).manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_app.cc"  />
+    <ClInclude Include="$(ProjectDir)$safeprojectname$_app.h" />
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_handler.cc"  />
+    <ClInclude Include="$(ProjectDir)$safeprojectname$_handler.h" />
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_win.cc"  />
+    <ClInclude Include="$(ProjectDir)resource.h" />
+    <ClCompile Include="$(ProjectDir)$safeprojectname$_handler_win.cc"  />
+    <ResourceCompile Include="$(ProjectDir)$safeprojectname$.rc"  />
+    <None Include="$(ProjectDir)res\app.ico"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\ZERO_CHECK.vcxproj">
+      <Project>{5845C972-EA4F-3FB3-9024-F8EB105430E8}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="$(SolutionDir)\libcef_dll_wrapper\libcef_dll_wrapper.vcxproj">
+      <Project>{3D798708-7D67-3E53-85F5-D68D80A25C11}</Project>
+      <Name>libcef_dll_wrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
